@@ -5,3 +5,4 @@ pandas
 numpy
 datetime
 timedelta
+base64
