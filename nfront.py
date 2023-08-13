@@ -33,13 +33,6 @@ def convert_timestamp_next(inp_str):
   return new_time_str_next
 
 # Define other functions (convert_timestamp_prev and convert_timestamp_next) similarly
-#def excel_downloader(data):
-    #excelfile=data.to_excel()
-    #b64=base64.b64encode(excelfile.encode()).decode()
-    #new_filename="new_text_file_{}_.xlsx".format(timestr)
-    #st.markdown("####Download File####")
-    #href=f'<a href="data:file/excel;base64,{b64}" download="{new_filename}">Click Here!!</a>'
-    #st.markdown(href,unsafe_allow_html=True)
 
 # Your existing code for reading CSV and Excel files
 df1 = pd.read_csv('Message_Flow_UE1 truncated.csv')
@@ -123,11 +116,10 @@ def main():
     st.header("Export Output Excel")
     st.write("Click the button below to export the DataFrame to Excel.")
     if st.button("Export to Excel"):
-        #excel_downloader(new_df_release)
-        writer = pd.ExcelWriter(engine='openpyxl')
-        yeh=new_df_release.to_excel(writer,sheet_name='Sheet1', index=False)
+        #writer = pd.ExcelWriter(engine='openpyxl')
+        new_df_release.to_excel('Output.xlsx', index=False)
         st.success('DataFrame is written to Excel File successfully.')
-        st.download_button(label="Download data as Excel", data=yeh, file_name='Output.xlsx', mime='text/xlsx')
+        st.download_button(label="Download data as Excel", data=new_df_release.to_excel('Output.xlsx', index=False))
 
 if __name__ == "__main__":
     main()
