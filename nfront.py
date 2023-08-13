@@ -121,7 +121,7 @@ def main():
         # write DataFrame to excel
         new_df_release.to_excel(datatoexcel)  
         # save the excel
-        datatoexcel.save()
+        datatoexcel.close()
         st.success('DataFrame is written to Excel File successfully.')
         #st.download_button("Download Output Excel", file_name)
 
