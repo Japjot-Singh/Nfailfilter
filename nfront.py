@@ -120,12 +120,12 @@ def main():
     # Export the output Excel
     st.header("Export Output Excel")
     st.write("Click the button below to export the DataFrame to Excel.")
-    if st.button("Export to Excel"):
-        file_name = 'Output.xlsx'
-        new_df_release.to_excel(file_name, index=False)
-        st.success('DataFrame is written to Excel File successfully.')
-        st.download_button("Download Output Excel", file_name)
-        st.markdown(get_binary_file_downloader_html('Wip_QRY.xlsx', 'Excel'), unsafe_allow_html=True)
+    #if st.button("Export to Excel"):
+    file_name = 'Output.xlsx'
+    new_df_release.to_excel(file_name, index=False)
+    st.success('DataFrame is written to Excel File successfully.')
+    #st.download_button("Download Output Excel", file_name)
+    st.markdown(get_binary_file_downloader_html(file_name, 'Excel'), unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
