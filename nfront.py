@@ -124,11 +124,10 @@ def main():
     st.write("Click the button below to export the DataFrame to Excel.")
     if st.button("Export to Excel"):
         #excel_downloader(new_df_release)
-        writer = pd.ExcelWriter('Output.xlsx', engine='openpyxl')
-        new_df_release.to_excel(writer,sheet_name='Sheet1', index=False)
-        writer.close()
+        writer = pd.ExcelWriter('/home/Downloads/Output.xlsx', engine='openpyxl')
+        ye=new_df_release.to_excel(writer,sheet_name='Sheet1', index=False)
         st.success('DataFrame is written to Excel File successfully.')
-        #st.download_button("Download Output Excel", file_name)
+        st.download_button("Download Output Excel", ye)
 
 if __name__ == "__main__":
     main()
