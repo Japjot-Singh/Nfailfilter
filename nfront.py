@@ -117,9 +117,16 @@ def main():
     st.write("Click the button below to export the DataFrame to Excel.")
     if st.button("Export to Excel"):
         #writer = pd.ExcelWriter(engine='openpyxl')
-        new_df_release.to_excel('Output.xlsx', index=False)
-        st.success('DataFrame is written to Excel File successfully.')
-        st.download_button(label="Download data as Excel", data=new_df_release.to_excel('Output.xlsx', index=False))
+        #new_df_release.to_excel('Output.xlsx', index=False)
+        #st.success('DataFrame is written to Excel File successfully.')
+        #st.download_button(label="Download data as Excel", data=new_df_release.to_excel('Output.xlsx', index=False))
+        data_as_excel= new_df_release.to_excel(index=False).encode("utf-8")
+        st.download_button(
+            "Download data as excel", 
+            data_as_excel, 
+            "output.xlsx",
+            "text/xlsx",
+        )
 
 if __name__ == "__main__":
     main()
