@@ -116,6 +116,7 @@ def main():
     st.header("Export Output Excel")
     st.write("Click the button below to export the DataFrame to Excel.")
     if st.button("Export to Excel"):
+        writer = pd.ExcelWriter('Output.xlsx', engine='xlsxwriter')
         new_df_release.to_excel(writer,sheet_name='Sheet1', index=False)
         writer.close()
         st.success('DataFrame is written to Excel File successfully.')
