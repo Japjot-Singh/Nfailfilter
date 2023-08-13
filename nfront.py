@@ -116,10 +116,14 @@ def main():
     st.header("Export Output Excel")
     st.write("Click the button below to export the DataFrame to Excel.")
     if st.button("Export to Excel"):
-        file_name = 'Output.xlsx'
-        new_df_release.to_excel(file_name, index=False)
+        # writing to Excel
+        datatoexcel = pd.ExcelWriter('Output.xlsx')  
+        # write DataFrame to excel
+        new_df_release.to_excel(datatoexcel)  
+        # save the excel
+        datatoexcel.save()
         st.success('DataFrame is written to Excel File successfully.')
-        st.download_button("Download Output Excel", file_name)
+        #st.download_button("Download Output Excel", file_name)
 
 if __name__ == "__main__":
     main()
