@@ -117,7 +117,7 @@ def main():
          with open(bin_file, 'rb') as f:
              data = f.read()
          bin_str = base64.b64encode(data).decode()
-         href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{os.path.basename(bin_file)}">Descargar {file_label}</a>'
+         href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{os.path.basename(bin_file)}">Download {file_label}</a>'
          return href
     # Export the output Excel
     st.header("Export Output Excel")
@@ -127,7 +127,7 @@ def main():
     new_df_release.to_excel(file_name, index=False)
     st.success('DataFrame is written to Excel File successfully.')
     #st.download_button("Download Output Excel", file_name)
-    st.markdown(get_binary_file_downloader_html(file_name, 'Excel'), unsafe_allow_html=True)
+    st.markdown(get_binary_file_downloader_html(file_name, 'Filtered Output Excel'), unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
