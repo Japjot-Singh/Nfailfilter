@@ -3,7 +3,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
-import xlsxwriter
 
 def convert_timestamp(inp_str):
     # Your existing function code\
@@ -125,7 +124,7 @@ def main():
     st.write("Click the button below to export the DataFrame to Excel.")
     if st.button("Export to Excel"):
         #excel_downloader(new_df_release)
-        writer = pd.ExcelWriter('Output.xlsx', engine='xlsxwriter')
+        writer = pd.ExcelWriter('Output.xlsx', engine='openpyxl')
         new_df_release.to_excel(writer,sheet_name='Sheet1', index=False)
         writer.close()
         st.success('DataFrame is written to Excel File successfully.')
