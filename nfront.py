@@ -111,22 +111,21 @@ def main():
     # Display the Final DataFrame
     st.header("Final DataFrame")
     st.write(new_df_release)
-
+    def get_binary_file_downloader_html(bin_file, file_label='File'):
+         with open(bin_file, 'rb') as f:
+             data = f.read()
+         bin_str = base64.b64encode(data).decode()
+         href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{os.path.basename(bin_file)}">Descargar {file_label}</a>'
+         return href
     # Export the output Excel
     st.header("Export Output Excel")
     st.write("Click the button below to export the DataFrame to Excel.")
     if st.button("Export to Excel"):
-        #writer = pd.ExcelWriter(engine='openpyxl')
-        #new_df_release.to_excel('Output.xlsx', index=False)
-        #st.success('DataFrame is written to Excel File successfully.')
-        #st.download_button(label="Download data as Excel", data=new_df_release.to_excel('Output.xlsx', index=False))
-        data_as_excel= new_df_release.to_excel(index=False).encode("utf-8")
-        st.download_button(
-            "Download data as excel", 
-            data_as_excel, 
-            "output.xlsx",
-            "text/xlsx",
-        )
+        file_name = 'Output.xlsx'
+        new_df_release.to_excel(file_name, index=False)
+        st.success('DataFrame is written to Excel File successfully.')
+        st.download_button("Download Output Excel", file_name)
+        st.markdown(get_binary_file_downloader_html('Wip_QRY.xlsx', 'Excel'), unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
