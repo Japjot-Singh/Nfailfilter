@@ -41,7 +41,7 @@ df1 = pd.read_csv('Message_Flow_UE1 truncated.csv')
 df2 = pd.read_excel('input-1.xlsx', sheet_name="7. VoNR CallStats")
 
 def main():
-    st.title("Nokia Call Fail Filter")
+    st.title("Call Fail Filter")
 
     # Display input files and allow the user to upload their own files
     st.header("Select Input Files")
